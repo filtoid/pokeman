@@ -1,10 +1,18 @@
 import pygame
 
 ball = None
+speed = [2, 2]
 
-def update():
+def update(size):
     global ball
-    pass
+    global speed
+    ball['rect'] = ball['rect'].move(speed)
+
+    if ball['rect'].left < 0 or ball['rect'].right > size[0]:
+        speed[0] = -speed[0]
+    if ball['rect'].top < 0 or ball['rect'].bottom > size[1]:
+        speed[1] = -speed[1]
+
 
 def draw(screen):
     global ball
@@ -32,7 +40,7 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 quit = True
-        update()
+        update(size)
         draw(screen)
 
 
