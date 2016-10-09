@@ -36,10 +36,13 @@ def main():
     pygame.display.set_caption('Poke-man')
 
     quit = False
+    clock = pygame.time.Clock()
+
     while quit == False:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 quit = True
+        clock.tick(30)
         update(size)
         draw(screen)
 
