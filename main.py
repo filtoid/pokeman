@@ -13,6 +13,13 @@ def update(size):
     if ball['rect'].top < 0 or ball['rect'].bottom > size[1]:
         ball['rect'] = ball['rect'].move([0,speed[1]*-1])
 
+    ball['swap_counter'] -= 1
+    if ball['swap_counter'] < 0:
+        ball['swap_counter'] = ball['start_counter']
+        ball['cur_image'] += 1
+        if ball['cur_image'] > len(ball['image'])-1:
+            ball['cur_image'] = 0
+
 
 def draw(screen):
     global ball
@@ -21,17 +28,23 @@ def draw(screen):
 
     screen.fill(black)
 
-    screen.blit(ball['image'], ball['rect'])
+    screen.blit(ball['image'][ball['cur_image']], ball['rect'])
 
     pygame.display.flip()
 
+    
 def main():
     global ball
     global speed
 
     ball = {}
-    ball['image'] = pygame.image.load("pokeball_closed.png")
-    ball['rect'] = ball['image'].get_rect()
+    ball['image'] = []
+    ball['image'].append(pygame.image.load("pokeball_closed.png"))
+    ball['image'].append(pygame.image.load("pokeball_open.png"))
+    ball['cur_image'] = 0
+    ball['start_counter'] = 10
+    ball['swap_counter'] = ball['start_counter']
+    ball['rect'] = ball['image'][0].get_rect()
 
     size = width, height = (600, 400)
     screen = pygame.display.set_mode(size)
