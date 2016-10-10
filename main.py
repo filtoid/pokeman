@@ -48,6 +48,14 @@ def draw(screen):
     screen.blit(ball['image'][ball['cur_image']], ball['rect'])
     if pikachu['visible']:
         screen.blit(pikachu['image'][0], pikachu['rect'])
+
+    #Draw arbitrary text on the screen
+    font = pygame.font.Font(None, 36)
+    text = font.render("Pokeman", 1, (255, 255, 0))
+    textpos = text.get_rect()
+    textpos.left = 200
+    screen.blit(text, textpos)
+
     pygame.display.flip()
 
 
