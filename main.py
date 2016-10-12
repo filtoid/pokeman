@@ -28,7 +28,7 @@ def update(size):
         # check if the ball is touching the pikachu
         if pikachu['rect'].colliderect(ball['rect']):
             pikachu['visible'] = False
-            print("Caught the pikachu")
+            print("You put out the fire!")
     else:
         # pick a random location to place the pikachu
         new_x = random.randrange(20,500)
@@ -51,7 +51,7 @@ def draw(screen):
 
     #Draw arbitrary text on the screen
     font = pygame.font.Font(None, 36)
-    text = font.render("Pokeman", 1, (255, 255, 0))
+    text = font.render("Fireman", 1, (255, 255, 0))
     textpos = text.get_rect()
     textpos.left = 200
     screen.blit(text, textpos)
@@ -66,8 +66,10 @@ def main():
 
     ball = {}
     ball['image'] = []
-    ball['image'].append(pygame.image.load("pokeball_closed.png"))
-    ball['image'].append(pygame.image.load("pokeball_open.png"))
+    ball['image'].append(pygame.image.load("kieran_fire.png"))
+    ball['image'].append(pygame.image.load("kieran_fire.png"))
+    ball['image'][0] = pygame.transform.scale(ball['image'][0],(150,200))
+    ball['image'][1] = pygame.transform.scale(ball['image'][1],(150,200))
     ball['cur_image'] = 0
     ball['start_counter'] = 10
     ball['swap_counter'] = ball['start_counter']
@@ -75,7 +77,7 @@ def main():
 
     pikachu = {}
     pikachu['image'] = []
-    pikachu['image'].append(pygame.image.load("pikachu.png"))
+    pikachu['image'].append(pygame.image.load("fire.png"))
     pikachu['image'][0] = pygame.transform.scale(pikachu['image'][0],(61,79))
     #211x314
     pikachu['rect'] = pikachu['image'][0].get_rect()
