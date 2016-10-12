@@ -68,8 +68,8 @@ def main():
     ball['image'] = []
     ball['image'].append(pygame.image.load("kieran_fire.png"))
     ball['image'].append(pygame.image.load("kieran_fire.png"))
-    ball['image'][0] = pygame.transform.scale(ball['image'][0],(150,200))
-    ball['image'][1] = pygame.transform.scale(ball['image'][1],(150,200))
+    ball['image'][0] = pygame.transform.scale(ball['image'][0],(300,400))
+    ball['image'][1] = pygame.transform.scale(ball['image'][1],(300,400))
     ball['cur_image'] = 0
     ball['start_counter'] = 10
     ball['swap_counter'] = ball['start_counter']
@@ -83,7 +83,7 @@ def main():
     pikachu['rect'] = pikachu['image'][0].get_rect()
     pikachu['visible'] = False
 
-    size = width, height = (600, 400)
+    size = width, height = (1200, 800)
     screen = pygame.display.set_mode(size)
     pygame.display.set_caption('Poke-man')
 
